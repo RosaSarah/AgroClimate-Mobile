@@ -4,24 +4,27 @@ import { Button } from "../components/Button";
 
 import logoAgroclimate from '../../assets/agroclimate.png'
 
-export function Home() {
+export function Login() {
     return (
         <View style={styles.login}>
             <Image
                 // Local da imagem
                 source={logoAgroclimate}
                 // Definindo a largura e altura da imagem
-                style={{ width: 150, height: 129 }}
+                style={{ width: 129, height: 129 }}
                 // Pra nao cortar a imagem
                 resizeMode="contain"
             />
-            
+            <Text style={styles.titulo}>Bem-Vindo!</Text>
+            <Input placeholder="E-mail" />
+            <Input placeholder="Senha" />
+            <Button>Entrar</Button>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    home: {
+    login: {
         // Espaço interno
         padding: 24,
         // Espaçamento entre itens

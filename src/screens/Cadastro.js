@@ -16,8 +16,12 @@ export function Cadastro() {
                 resizeMode="contain"
             />
             <Text style={styles.titulo}>Bem-Vindo!</Text>
-            <Input placeholder="E-mail" />
-            <Input placeholder="Senha" />
+            <Input placeholder="Nome completo:" />
+            <Input placeholder="CNPJ:" />
+            <Input placeholder="CPF:" />
+            <Input placeholder="CEP:" />
+            <Input placeholder="Telefone:" />
+            <Input placeholder="E-mail:" />
             <Button>Entrar</Button>
         </View>
     )
