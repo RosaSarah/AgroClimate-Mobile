@@ -3,6 +3,7 @@ import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 
 import logoAgroclimate from '../../assets/agroclimate.png'
+import { Login } from "./Login";
 
 export function Home() {
     return (
@@ -21,7 +22,7 @@ export function Home() {
 }
 
 const styles = StyleSheet.create({
-    home: {
+    Login: {
         // Espaço interno
         padding: 24,
         // Espaçamento entre itens
