@@ -4,7 +4,7 @@ import { Button } from "../components/Button";
 
 import logoAgroclimate from '../../assets/agroclimate.png'
 
-export function Cadastro ({ navigation }) {
+export function Senha({ navigation }) {
     return (
         <View style={styles.login}>
             <Image
@@ -16,22 +16,23 @@ export function Cadastro ({ navigation }) {
                 resizeMode="contain"
             />
             <Text style={styles.titulo}>Bem-Vindo!</Text>
-            <Input placeholder="Nome completo:" />
-            <Input placeholder="CNPJ:" />
-            <Input placeholder="CPF:" />
-            <Input placeholder="CEP:" />
-            <Input placeholder="Telefone:" />
-            <Input placeholder="E-mail:" />
-            <Button onPress={() => navigation.navigate('Senha')}>
-                Enviar
-            </Button>
+            <Input placeholder="Senha" />
+            <Input placeholder="Confirme sua senha" />
+
+            <View style={styles.instrucoes}> 
+                <Text>Crie sua senha, deve conter:</Text>
+                <Text>*No minimo 8 digitos;</Text>
+                <Text>*Uma letra maiuscula;</Text>
+                <Text>*Uma letra minuscula;"</Text>
+            </View>
+
+            <Button onPress={() => navigation.navigate('Home')}>Enviar</Button>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     login: {
-        flex: 1,
         // Espaço interno
         padding: 24,
         // Espaçamento entre itens
@@ -46,5 +47,17 @@ const styles = StyleSheet.create({
         fontSize: 24,
         // Espessura do texto (negrito)
         fontWeight: "600"
+    },
+    instrucoes:{
+        backgroundColor: 'white',
+        borderWidth: 1,
+        borderColor:'#595656',
+        borderStyle: 'solid',
+        borderRadius: 10,
+        padding: 15,
+        gap: 3,
+        marginRight: 'auto'
+
+
     }
 })

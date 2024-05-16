@@ -7,6 +7,10 @@ import { Home } from './src/screens/Home';
 import { Login } from './src/screens/Login';
 import { Cadastro } from './src/screens/Cadastro';
 import { VisualizarSafra } from './src/screens/VisualizarSafra';
+import { Senha } from './src/screens/Senha';
+import { Image, Text } from 'react-native';
+import logoAgroclimate from './assets/LogoChalleng.png'
+
 
 const { Navigator, Screen } = createDrawerNavigator();
 
@@ -14,11 +18,43 @@ const { Navigator, Screen } = createDrawerNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Navigator>
-        <Screen name="Home" component={Home} />
-        <Screen name="Login" component={Login} />
-        <Screen name="Cadastro" component={Cadastro} />
+      <Navigator screenOptions={{
+        headerTitle: () => (
+          <Text style={{
+            textAlign: 'center',
+            fontWeight: '700',
+            
+          }}>
+            AGROCLIMATE
+          </Text>
+        ),
+        headerRight: () => (
+          <Image source={logoAgroclimate} style={{width: 100, height: 100}}  />
+        ),
+      }}>
+        <Screen
+          name="Login" component={Login} options={{ headerShown:false }}/>
+        <Screen
+          name="Home"
+          component={Home}
+        />
+        <Screen
+          name="Cadastro"
+          component={Cadastro}
+          options={{
+            headerShown:false,
+            drawerItemStyle: {display: 'none'}
+          }}
+        />
         <Screen name="Visualizar Safra" component={VisualizarSafra} />
+        <Screen
+          name="Senha"
+          component={Senha}
+          options={{
+            headerShown:false,
+            drawerItemStyle: {display: 'none'}
+          }}
+        />
       </Navigator>
     </NavigationContainer>
   );

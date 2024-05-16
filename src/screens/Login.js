@@ -1,10 +1,10 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 
 import logoAgroclimate from '../../assets/agroclimate.png'
 
-export function Login() {
+export function Login({ navigation }) {
     return (
         <View style={styles.login}>
             <Image
@@ -18,15 +18,23 @@ export function Login() {
             <Text style={styles.titulo}>Bem-Vindo!</Text>
             <Input placeholder="E-mail" />
             <Input placeholder="Senha" />
-            <Button>Entrar</Button>
+            <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
+                <Text>Ainda não tem uma conta? Crie agora</Text>
+            </TouchableOpacity>
+            <Button onPress={() => navigation.navigate('Home')}>
+                Entrar
+            </Button>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     login: {
+        // Ocupa o espaço todo da
+        flex: 1,
         // Espaço interno
         padding: 24,
+        justifyContent: "center",
         // Espaçamento entre itens
         gap: 24,
 

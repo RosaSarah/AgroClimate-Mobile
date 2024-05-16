@@ -4,19 +4,15 @@ import { Button } from "../components/Button";
 
 import logoAgroclimate from '../../assets/agroclimate.png'
 import { Login } from "./Login";
+import { OptionButton } from "../components/OptionButton";
 
 export function Home() {
     return (
         <View style={styles.login}>
-            <Image
-                // Local da imagem
-                source={logoAgroclimate}
-                // Definindo a largura e altura da imagem
-                style={{ width: 150, height: 129 }}
-                // Pra nao cortar a imagem
-                resizeMode="contain"
-            />
-            
+            <OptionButton title='jijinun'>
+                njbj
+            </OptionButton>
+
         </View>
     )
 }
