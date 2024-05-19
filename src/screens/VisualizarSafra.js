@@ -4,8 +4,9 @@ import { Button } from "../components/Button";
 
 import logoAgroclimate from '../../assets/agroclimate.png'
 
-export function VisualizarSafra() {
+export function VisualizarSafra({}) {
     return (
+        
         <View style={styles.login}>
             <Image
                 // Local da imagem

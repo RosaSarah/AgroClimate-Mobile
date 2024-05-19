@@ -4,7 +4,7 @@ import { Button } from "../components/Button";
 
 import logoAgroclimate from '../../assets/agroclimate.png'
 
-export function Login() {
+export function AtualizarSafra({}) {
     return (
         <View style={styles.login}>
             <Image
@@ -15,10 +15,10 @@ export function Login() {
                 // Pra nao cortar a imagem
                 resizeMode="contain"
             />
-            <Text style={styles.titulo}>Bem-Vindo!</Text>
-            <Input placeholder="E-mail" />
-            <Input placeholder="Senha" />
-            <Button>Entrar</Button>
+            <Text style={styles.titulo}>Informe a safra que deseja vizualizar:</Text>
+            <Input placeholder="Id Safra:" />
+            
+            <Button>Vizualizar</Button>
         </View>
     )
 }
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     },
     titulo: {
         // Tamanho do texto
-        fontSize: 24,
+        fontSize: 18,
         // Espessura do texto (negrito)
         fontWeight: "600"
     }

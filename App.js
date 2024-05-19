@@ -5,9 +5,13 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { Home } from './src/screens/Home';
 import { Login } from './src/screens/Login';
-import { Cadastro } from './src/screens/Cadastro';
-import { VisualizarSafra } from './src/screens/VisualizarSafra';
+import { Cadastro } from './src/screens/Cadastro'
 import { Senha } from './src/screens/Senha';
+import { VisualizarSafra } from './src/screens/VisualizarSafra';
+import { AtualizarSafra } from './src/screens/AtualizarSafra';
+
+
+
 import { Image, Text } from 'react-native';
 import logoAgroclimate from './assets/LogoChalleng.png'
 
@@ -29,15 +33,22 @@ export default function App() {
           </Text>
         ),
         headerRight: () => (
-          <Image source={logoAgroclimate} style={{width: 100, height: 100}}  />
+          <Image source={logoAgroclimate}
+           style={{width: 100, height: 100}}  />
         ),
       }}>
         <Screen
-          name="Login" component={Login} options={{ headerShown:false }}/>
+
+          name="Login" 
+          component={Login} 
+          options={{ headerShown:false }}/>
+
         <Screen
+
           name="Home"
           component={Home}
         />
+
         <Screen
           name="Cadastro"
           component={Cadastro}
@@ -46,7 +57,7 @@ export default function App() {
             drawerItemStyle: {display: 'none'}
           }}
         />
-        <Screen name="Visualizar Safra" component={VisualizarSafra} />
+
         <Screen
           name="Senha"
           component={Senha}
@@ -54,7 +65,31 @@ export default function App() {
             headerShown:false,
             drawerItemStyle: {display: 'none'}
           }}
+          />
+
+        <Screen 
+          name="Visualizar Safra"
+          component={VisualizarSafra} 
+          options={{
+            headerShown:false,
+            
+          }}
         />
+
+        <Screen 
+          name="Atualizar Safra"
+          component={AtualizarSafra} 
+          options={{
+            headerShown:false,
+        
+          }}
+        />
+
+
+          
+        
+          
+        
       </Navigator>
     </NavigationContainer>
   );
