@@ -3,8 +3,19 @@ import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 
 import logoAgroclimate from '../../assets/agroclimate.png'
+import { useState } from "react";
+import * as yup from 'yup'
+import {api} from "../services/api"
 
 export function Senha({ navigation }) {
+    const [senha, setSenha] = useState('')
+    const [confirmarSenha, setConfirmarSenha] =useState('')
+
+    const senhaSchema = yup.object({
+        senha: yup.string().required('Senha é um campo obrigatório'),
+        confirmarSenha: yup.string().min(8,"A senha deve conter no mínimo 8 dígitos").required('Confirmar sua senha é um campo obrigatório')
+    });
+
     return (
         <View style={styles.login}>
             <Image
@@ -15,18 +26,43 @@ export function Senha({ navigation }) {
                 // Pra nao cortar a imagem
                 resizeMode="contain"
             />
+             {erro ?(
+                <View> 
+                    <Text>{erro}</Text>
+                    <Text style={styles.erro}>Tente novamente</Text>
+                </View>    
+            ) : (
             <Text style={styles.titulo}>Bem-Vindo!</Text>
-            <Input placeholder="Senha" />
-            <Input placeholder="Confirme sua senha" />
+
+            )}
+
+        
+            <Input placeholder="Senha" 
+            value={senha} onChangeText={setSenha}/>
+
+            <Input placeholder="Confirme sua senha" 
+            value={confirmarSenha} onChangeText = {setConfirmarSenha}/>
 
             <View style={styles.instrucoes}> 
                 <Text>Crie sua senha, deve conter:</Text>
-                <Text>*No minimo 8 digitos;</Text>
+                <Text>*No mínimo 8 digitos;</Text>
                 <Text>*Uma letra maiuscula;</Text>
                 <Text>*Uma letra minuscula;"</Text>
             </View>
 
-            <Button onPress={() => navigation.navigate('Home')}>Enviar</Button>
+            <Button onPress={() =>{
+            
+            senhaSchema.validate({senha, confirmarSenha})
+            
+            .then(()=>{
+                api.post('/autenticacao/login',{senha,confirmarSenha})
+                .then(()=>navigation.navigate('Home'))
+                .catch(() =>setErro('Um dos campos não foi preenchido corretamente')) 
+            })
+
+            .catch(error => setErro(error.errors[0]))
+
+         }}>Enviar</Button>
         </View>
     )
 }

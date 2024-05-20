@@ -9,11 +9,13 @@ import { Cadastro } from './src/screens/Cadastro'
 import { Senha } from './src/screens/Senha';
 import { VisualizarSafra } from './src/screens/VisualizarSafra';
 import { AtualizarSafra } from './src/screens/AtualizarSafra';
+import { CadastrarSafra } from './src/screens/CadastrarSafra';
 
 
 
 import { Image, Text } from 'react-native';
 import logoAgroclimate from './assets/LogoChalleng.png'
+
 
 
 const { Navigator, Screen } = createDrawerNavigator();
@@ -68,24 +70,24 @@ export default function App() {
           />
 
         <Screen 
+          name="Cadastrar Safra"
+          component={CadastrarSafra} 
+          
+        />  
+
+        <Screen 
           name="Visualizar Safra"
           component={VisualizarSafra} 
-          options={{
-            headerShown:false,
-            
-          }}
+          
         />
 
         <Screen 
           name="Atualizar Safra"
           component={AtualizarSafra} 
-          options={{
-            headerShown:false,
-        
-          }}
+          
         />
 
-
+       
           
         
           

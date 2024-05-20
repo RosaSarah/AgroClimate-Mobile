@@ -1,13 +1,11 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
-
-import logoAgroclimate from '../../assets/agroclimate.png'
 import { api } from "../services/api";
 import { useState } from "react";
 import dayjs from "dayjs";
 
-export function AtualizarSafra({navigation}) {
+export function CadastrarSafra({navigation}) {
     const [ nome, setnome] = useState('')
     const [dataInicio, setDataInicio] =useState('')
     const [areaTotal, setAreaTotal] =useState('')
@@ -18,20 +16,8 @@ export function AtualizarSafra({navigation}) {
         
         <View style={styles.login}>
             
-            <Text style={styles.titulo}>Digite o id da Safra a ser alterada:</Text>
+            <Text style={styles.titulo}>Cadastre sua Safra</Text>
 
-            <Input placeholder="Id Safra:"
-            value={idSafra} onChangeText={setIdSafra} />
-
-
-            <Button onPress={()=>{
-                if(idSafra=='')return setErro('Id inválido')
-
-                api.get('/safras/' + idSafra)
-                .then(response=>setDadosSafra(response.data))
-                .catch(()=>setErro ('Safra não encontrada'))
-
-            }} >Buscar</Button>
             
             <Input placeholder="Nome Safra:"
             value={nome} onChangeText={setnome} />
@@ -45,7 +31,14 @@ export function AtualizarSafra({navigation}) {
             <Input placeholder="Data de término:"
             value={dataTermino} onChangeText={setDataTermino} />
             
-            
+            <Button onPress={()=>{
+                if(idSafra=='')return setErro('Id inválido')
+
+                api.get('/safras/' + idSafra)
+                .then(response=>setDadosSafra(response.data))
+                .catch(()=>setErro ('Safra não encontrada'))
+
+            }} >Enviar</Button>
 
             {erro ?(
                 <Text>

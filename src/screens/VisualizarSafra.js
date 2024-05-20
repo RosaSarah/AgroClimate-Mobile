@@ -3,8 +3,14 @@ import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 
 import logoAgroclimate from '../../assets/agroclimate.png'
+import { api } from "../services/api";
+import { useState } from "react";
+import dayjs from "dayjs";
 
-export function VisualizarSafra({}) {
+export function VisualizarSafra({navigation}) {
+    const [ idSafra, setIdSafra] = useState('')
+    const [dadosSafra, setDadosSafra] =useState('')
+    const [erro, setErro] =useState('')
     return (
         
         <View style={styles.login}>
@@ -12,14 +18,42 @@ export function VisualizarSafra({}) {
                 // Local da imagem
                 source={logoAgroclimate}
                 // Definindo a largura e altura da imagem
-                style={{ width: 129, height: 129 }}
+                style={{ width: 150, height: 150 }}
                 // Pra nao cortar a imagem
                 resizeMode="contain"
             />
             <Text style={styles.titulo}>Informe a safra que deseja vizualizar:</Text>
-            <Input placeholder="Id Safra:" />
+
             
-            <Button>Vizualizar</Button>
+            <Input placeholder="Id Safra:"
+            value={idSafra} onChangeText={setIdSafra} />
+            
+            <Button onPress={()=>{
+                if(idSafra=='')return setErro('Id inválido')
+
+                api.get('/safras/' + idSafra)
+                .then(response=>setDadosSafra(response.data))
+                .catch(()=>setErro ('Safra não encontrada'))
+
+            }} >Vizualizar</Button>
+
+            {erro ?(
+                <Text>
+                    {erro}
+                </Text>
+    
+            ) : null}
+
+            {dadosSafra ? (
+                <View>
+                    <Text>
+                        
+                        Data de inicio: {dayjs( dadosSafra.dataInicio)
+                        .format('DD/MM/YYYY')} 
+                    </Text>
+                </View>
+            ) : null}
+
         </View>
     )
 }
@@ -27,9 +61,9 @@ export function VisualizarSafra({}) {
 const styles = StyleSheet.create({
     login: {
         // Espaço interno
-        padding: 24,
+        padding: 28,
         // Espaçamento entre itens
-        gap: 24,
+        gap: 27,
 
         // Alinhar ao centro
         alignItems: 'center', 
